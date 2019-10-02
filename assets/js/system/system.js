@@ -1,4 +1,4 @@
-const cmds = require('cmds');
+import 'cmds';
 
 const NB_SYSCALLS = 100;
 
@@ -25,7 +25,7 @@ let calls = [];
 calls.length = NB_SYSCALLS;
 
 function add(num, syscall_handler) {
-    calls[num] = h;
+    calls[num] = syscall_handler;
     console.log("Adding handler for " + num);
 }
 
@@ -36,8 +36,7 @@ function call(num) {
 }
 
 function sys_init() {
-    var i;
-    for (i = 0; i < NB_SYSCALLS; i++)
+    for (let i = 0; i < NB_SYSCALLS; i++)
         calls[i] = null;
 
     add(SYSCALLS.LS, ls);
